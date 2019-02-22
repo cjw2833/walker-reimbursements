@@ -1,0 +1,93 @@
+<div class="container">
+        <div class="d-flex justify-content-center">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+      
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                <a class="nav-item nav-link" (click)="displayAllReimbInfo('All Approved Reimbursement Tickets', 2)">All Approved Tickets</a>
+                <a class="nav-item nav-link" (click)="displayAllReimbInfo('All Active Reimbursement Tickets', 1)">All Active Tickets</a>
+                <a class="nav-item nav-link" (click)="displayAllReimbInfo('All Denied Reimbursement Tickets', 3)">All Denied Tickets</a>
+                <a class="nav-item nav-link" (click)="displayMyReimbInfo('My Approved Reimbursement Tickets', 2)">My Approved Tickets</a>
+                <a class="nav-item nav-link" (click)="displayMyReimbInfo('My Active Reimbursement Tickets', 1)">My Active Tickets</a>
+                <a class="nav-item nav-link" (click)="displayMyReimbInfo('My Denied Reimbursement Tickets', 3)">My Denied Tickets</a>
+                </div>
+              </div>
+          </nav>
+        </div>
+      
+          <div class="card">
+            <div class="card-header">
+              <h3>{{ fmMenuTitle }}</h3>
+              <div class="d-flex justify-content-end invoice_icon">
+                <span><i class="fas fa-file-invoice-dollar"></i></span>
+              </div>
+            </div>
+            <div class="card-body">
+                <!-- Display Current Tickets -->
+                <table class="table table-bordered table-sm">
+                    <tr class="thead">
+                      <th>Reimb Id</th>
+                      <th>Amount</th>
+                      <th>Submitted</th>
+                      <th>Resolved</th>
+                      <th>Description</th>
+                      <th>Employee ID</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                    </tr>
+                    <tr class="reimbs" *ngFor="let reimb of reimbInfo; let i = index">
+                      <td>{{ reimb.id }}</td>
+                      <td>{{ reimb.amount | currency }}</td>
+                      <td>{{ reimb.submitted | date:'short' }}</td>
+                      <td>{{ reimb.resolved | date:'short' }}</td>
+                      <td>{{ reimb.description }}</td>
+                      <td>{{ reimb.author_id }}</td>
+                      <td>{{ reimb.type_id | typePipe }}</td>
+                      <td *ng></td>
+                      <td *ngIf="fmPending; else e">
+                        <div class="form-group-logout">
+                            <input type="submit" [disabled]="isMyReimb(i)" (click)="approve(i)" value="APPROVE" class="btn approveBtn">
+                        </div>
+                        <div class="form-group-logout">
+                            <input type="submit" [disabled]="isMyReimb(i)" (click)="deny(i)" value="DENY" class="btn denyBtn">
+                        </div>
+                      </td>
+                      <ng-template #e>
+                        <td>{{ reimb.status_id | statusPipe }}</td>
+                      </ng-template> 
+                    </tr>
+                  </table>
+            </div>
+                  
+            <div class="card-footer">
+            </div>
+          </div>
+      
+          <div class="card2">
+              <div class="card-header">
+                
+                  <div class="d-flex justify-content-begin user_icon">
+                      <span><i class="fas fa-user"></i></span>
+                      <h5>Welcome, {{ firstName }}</h5>
+                    </div>
+                
+              </div>
+              <div class="card-body2">
+                  <h6>Tickets To Approve: {{ allActiveTickets }}</h6>
+                  <!-- Display fm active personal tickets -->
+                  <div class="form-group-logout">
+                    <input id="nReq" type="submit" (click)="newRequest()" value="Create New Request" class="btn pg_btn">
+                  </div>
+              </div>
+                    
+              <div class="card-footer">
+                  <div class="form-group-logout">
+                      <input type="submit" (click)="logout()" value="Logout" class="btn pg_btn">
+                  </div>
+              </div>
+          </div>
+      
+      </div>

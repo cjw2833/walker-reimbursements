@@ -1,0 +1,93 @@
+<div class="container">
+		<div class="d-flex justify-content-center">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					  <span class="navbar-toggler-icon"></span>
+					</button>
+	
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					  <div class="navbar-nav">
+							<a class="nav-item nav-link">Create New Reimbursement Request</a>	
+					  </div>
+					</div>
+			</nav>
+		</div>
+	
+		  <div class="card">
+				<div class="card-header">
+					<h3>New Reimbursement Request</h3>
+					<div class="d-flex justify-content-end invoice_icon">
+						<span><i class="fas fa-file-invoice-dollar"></i></span>
+					</div>
+				</div>
+				<div class="card-body">
+					<form>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+							</div>
+							<input type="number" [ngModelOptions]="{standalone:true}" [(ngModel)]="reimbCreateModel.amount" name="amount" class="form-control" placeholder="Amount">
+			  </div>
+	
+						<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-ticket-alt"></i></span>
+								</div>
+								<select (change)="selectedType($event)" class="custom-select" id="inputGroupSelect01">
+								  <option selected>Choose Reimbursement Type...</option>
+								  <option value="LODGING">LODGING</option>
+								  <option value="TRAVEL">TRAVEL</option>
+								  <option value="FOOD">FOOD</option>
+								  <option value="OTHER">OTHER</option>
+								</select>
+						</div>
+	
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+							</div>
+							<textarea class="form-control" required minlength="50" [ngModelOptions]="{standalone:true}" [(ngModel)]="reimbCreateModel.description" name="description" aria-label="Description"></textarea>
+						</div>
+						
+						<div class="input-group form-group">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="inputGroupFile04">
+								<label class="custom-file-label" for="inputGroupFile04">Choose Receipt File</label>
+							</div>
+							<div class="input-group-prepend">
+								<button class="btn btn-outline-secondary" type="button">Upload</button>
+							</div>
+						</div>
+	
+					</form>
+				</div>
+				
+				<div class="card-footer">
+						<div class="form-group-logout">
+								<button type="submit" id="subBtn" (click)="submitRequest()" value="Submit Request" class="btn float-center pg_btn">Submit Request</button>
+						</div>
+				</div>
+			</div>
+	
+			<div class="card2">
+					<div class="card-header">
+					  
+						<div class="d-flex justify-content-begin user_icon">
+							<span><i class="fas fa-user"></i></span>
+							<h5>Welcome, {{ firstName }}</h5>
+						  </div> 
+					</div>
+					<div class="card-body2">
+						<div class="form-group-logout">
+						  <input id="nReq" type="submit" (click)="cancelRequest()" value="Cancel Request" class="btn pg_btn">
+						</div>
+					</div>
+						  
+					<div class="card-footer">
+						<div class="form-group-logout">
+							<input type="submit" (click)="logout()" value="Logout" class="btn pg_btn">
+						</div>
+					</div>
+				</div>
+	
+	</div>

@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="d-flex justify-content-center">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link" (click)="displayReimbInfo('Approved Reimbursement Tickets', 2)">Approved Tickets</a>
+            <a class="nav-item nav-link" (click)="displayReimbInfo('Active Reimbursement Tickets', 1)">Active Tickets</a>
+            <a class="nav-item nav-link" (click)="displayReimbInfo('Denied Reimbursement Tickets', 3)">Denied Tickets</a>
+            </div>
+          </div>
+      </nav>
+    </div>
+  
+      <div class="card">
+        <div class="card-header">
+          <h3>{{ empMenuTitle }}</h3>
+          <div class="d-flex justify-content-end invoice_icon">
+            <span><i class="fas fa-file-invoice-dollar"></i></span>
+          </div>
+        </div>
+        <div class="card-body">
+            <!-- Display Current Tickets -->
+            <table class="table table-bordered table-sm">
+                <tr class="thead">
+                  <th>Reimb Id</th>
+                  <th>Amount</th>
+                  <th>Submitted</th>
+                  <th>Resolved</th>
+                  <th>Description</th>
+                  <th>Explaination</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                </tr>
+                <tr class="reimbs" *ngFor="let reimb of reimbInfo">
+                  <td>{{ reimb.id }}</td>
+                  <td>{{ reimb.amount | currency }}</td>
+                  <td>{{ reimb.submitted | date:'short' }}</td>
+                  <td>{{ reimb.resolved | date:'short' }}</td>
+                  <td>{{ reimb.description }}</td>
+                  <td>{{ reimb.explaination }}</td>
+                  <td>{{ reimb.type_id | typePipe }}</td>
+                  <td>{{ reimb.status_id | statusPipe }}</td>
+                </tr>
+              </table>
+        </div>
+              
+        <div class="card-footer">
+        </div>
+      </div>
+  
+      <div class="card2">
+          <div class="card-header">
+            
+              <div class="d-flex justify-content-begin user_icon">
+                  <span><i class="fas fa-user"></i></span>
+                  <h5>Welcome, {{ firstName }}</h5>
+                </div>
+            
+          </div>
+          <div class="card-body2">
+              <h6>Active Tickets: {{ activeTickets }}</h6>
+              <div class="form-group-logout">
+                <input id="nReq" type="submit" (click)="newRequest()" value="Create New Request" class="btn pg_btn">
+              </div>
+          </div>
+                
+          <div class="card-footer">
+              <div class="form-group-logout">
+                  <input type="submit" (click)="logout()" value="Logout" class="btn pg_btn">
+              </div>
+          </div>
+      </div>
+  
+  </div>

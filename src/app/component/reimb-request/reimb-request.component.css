@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.container {
+    height: 100%;
+    align-content: center;
+}
+
+.navbar {
+    background-color: rgba(0,0,0,0.15) !important;
+}
+
+.card {
+    align-content: center;
+    height: 550px;
+    margin-top: 70px;
+    margin-bottom: auto;
+    width: 750px;
+    float: left;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card2 {
+    align-content: right;
+    height: 180px;
+    margin-top: 70px;
+    margin-bottom: auto;
+    width: 280px;
+    float: right;
+    background-color: rgba(0,0,0,0.5) !important;
+}
+
+.invoice_icon span{
+    font-size: 60px;
+    margin-left: 10px;
+    color: #FFB433;
+}
+
+.user_icon span{
+    font-size: 20px;
+    margin-right: 10px;
+    color: #FFB433;
+}
+
+.card-body2 {
+    padding: 10px;
+    height: 75px;
+}
+
+.card-header {
+    color: white;
+}
+
+.invoice_icon{
+    position: absolute;
+    right: 20px;
+    top: -35px;
+}
+
+h6 {
+    color: white;
+}
+
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.form-group-logout {
+    text-align: center;
+}
+
+.pg_btn{
+    color: #00162b;
+    background-color: #FFB433;
+    height: 35px;
+    width: 100px;
+    padding: 3px;
+    margin: -3px;
+    text-align: center;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #FFB433;
+    color: #00162b;
+    border:0 !important;
+}
+    
+input:focus {
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+#nReq, #subBtn{
+    width: 150px;
+}
+
+.pg_btn:hover{
+    color: #00162b;
+    background-color: white;
+}
